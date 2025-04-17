@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Game Tracker 2.0</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <h1>Game Tracker</h1>
+
+  <label>Add Player:</label>
+  <input type="text" id="playerName" placeholder="Player Name"/>
+  <button onclick="addPlayer()">Add Player</button>
+
+  <label>Choose Game:</label>
+  <select id="gameSelect">
+    <option value="Warframe">Warframe</option>
+    <option value="Black Ops Zombies">Black Ops Zombies</option>
+    <option value="Half Life">Half Life</option>
+    <option value="Portal">Portal</option>
+    <option value="Roblox">Roblox</option>
+    <option value="Dead Space">Dead Space</option>
+    <option value="Fable: The Lost Chapters">Fable: The Lost Chapters</option>
+    <option value="Fortnite">Fortnite</option>
+  </select>
+
+  <button onclick="assignGame()">Assign Game to Player</button>
+
+  <label>Enter 3 Scores (comma separated):</label>
+  <input type="text" id="scoreInput" placeholder="e.g. 90,80,100" />
+  <button onclick="addScores()">Add Scores</button>
+
+  <hr/>
+
+  <button onclick="displaySummary()">Display Summary</button>
+  <button onclick="sortByAverage()">Sort Players by Average</button>
+  <button onclick="showPopularGame()">Most Popular Game</button>
+
+  <div id="output"></div>
+
+  <script src="gameTracker.js"></script>
+</body>
+</html>
