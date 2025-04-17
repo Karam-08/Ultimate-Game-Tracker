@@ -70,7 +70,7 @@ function displaySummary(){
 }
 
 function sortByAverage(){
-
+    
 }
 
 function showPopularGame(){
