@@ -1,40 +1,39 @@
 let gameTitles = ['Warframe', 'Black Ops Zombies', 'Half Life', 'Portal', 'Roblox', 'Dead Space', 'Fable: The Lost Chapters', 'Fortnite'];
 let players = [];
-
 let playerGames = new Map(); // Holds each player and assigned games
-
-let gameScores = [];
+let gameScores = new Map();
 
 function addPlayer(){
-    var namePlayer = document.getElementById("playerName").value;
-    if(!players.includes(namePlayer)){
-        players.push(namePlayer)
+    const name = document.getElementById("playerName").value;
+    if(name && !players.includes(name)){
+        players.push(name)
+        playerGames.set(name, new Set())
+        gameScores.set(name, [])
+        alert(`${name} has been added.`)
     }else{
-        alert(`This person is already playing.`)
+        alert(`${name} is already playing.`)
     }
+    console.log(players)
 }
 
 function assignGame(){
-    var gamePlayer = document.getElementById("playerName").value;
+    const name = document.getElementById("playerName").value
+    const game = document.getElementById("gameSelect").value
+    if(!playerGames.has(game)){
+        playerGames.set(game)
+        alert(`${game} has been added to the player's list`)
+    }else{
+        alert(`${game} is already being played by your current player`)
+    }
+    console.log(playerGames)
 }
 
 function addScores(){
-    var scores = document.getElementById("playerName").value;
-    for(var i = 0; i < scores.length; i++){
-        if(!gameScores.includes(scores)){
-            gameScores.push(scores)
-        }else{
-            alert("This person already has their scores set.")
-        }
-        console.log(gameScores)
-    }
+    const scores = document.getElementById("scoreInput")
 }
 
 function displaySummary(){
-    let player = player[i]
-    for(var i = 0; i < players.length; i++){
-        ("output").innerHTML(`${player} has gotten these scores: $l`)
-    }
+
 }
 
 function sortByAverage(){
