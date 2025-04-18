@@ -5,6 +5,7 @@ let gameScores = new Map();
 
 function addPlayer(){
     const name = document.getElementById("playerName").value;
+
     if(name && !players.includes(name)){
         players.push(name)
         playerGames.set(name, new Set())
@@ -13,27 +14,61 @@ function addPlayer(){
     }else{
         alert(`${name} is already playing.`)
     }
+
     console.log(players)
 }
 
 function assignGame(){
     const name = document.getElementById("playerName").value
     const game = document.getElementById("gameSelect").value
-    if(!playerGames.has(game)){
-        playerGames.set(game)
-        alert(`${game} has been added to the player's list`)
-    }else{
-        alert(`${game} is already being played by your current player`)
+
+    if(!players.includes(name)){
+        alert(`You must add your player first.`)
+        return;
     }
-    console.log(playerGames)
+
+    const games = playerGames.get(name);
+
+    if(games.has(game)){
+        alert(`${name} already has ${game} in their list.`)
+    }else if(games.size >= 3){
+        alert(`${name} already has 3 games in their list.`)
+    }else{
+        games.add(game)
+        alert(`${game} has been assigned to ${name}'s list.`)
+    }
 }
 
 function addScores(){
-    const scores = document.getElementById("scoreInput")
+    const name = document.getElementById("playerName").value
+    const scoreInput = document.getElementById("scoreInput").value
+
+    if(!players.includes(name)){
+        alert(`You must add your player first.`)
+        return;
+    }
+
+    const scores = scoreInput.split(",")
+    console.log(scores)
+
+    if (scores.length !== 3) {
+        alert("Please enter exactly 3 valid numbers, separated by commas.");
+        return;
+    }
+
+    gameScores.set(name, scores);
+    alert(`Scores for ${name} have been recorded: ${scores.join(', ')}`);
+    console.log(gameScores);
 }
 
 function displaySummary(){
+    const output = document.getElementById("output");
+    output.innerHTML = ""
 
+    if(players.length === 0){
+        output.innerHTML = "<p>There are no players selected.</p>";
+        return
+    }
 }
 
 function sortByAverage(){
