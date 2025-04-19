@@ -69,6 +69,10 @@ function displaySummary(){
         output.innerHTML = "<p>There are no players selected.</p>";
         return
     }
+
+    for(var i = 0; i < players.length; i++){
+        nameDisplay = document.createElement()
+    }
 }
 
 function sortByAverage(){
