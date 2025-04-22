@@ -1,7 +1,7 @@
 let gameTitles = ['Warframe', 'Black Ops Zombies', 'Half Life', 'Portal', 'Roblox', 'Dead Space', 'Fable: The Lost Chapters', 'Fortnite'];
 let players = []; // Stores amount of players
 let playerGames = new Map(); // Stores each player and their assigned games
-let gameScores = []; // Stores each player and their scores
+let playerScores = []; // Stores each player and their scores
 
 
 function addPlayer(){
@@ -10,7 +10,7 @@ function addPlayer(){
     if(name && !players.includes(name)){ // If the name is valid and not already in the list
         players.push(name) // Add player
         playerGames.set(name, new Set()) // Gives an empty game list
-        gameScores.push([name, []]) // Adds empty score array
+        playerScores.push([name, []]) // Adds empty score array
         alert(`${name} has been added.`)
     }else{
         alert(`${name} is already playing.`)
@@ -61,9 +61,9 @@ function addScores(){
         return;
     }
 
-    for(var i = 0; i < gameScores.length; i++){ // Loops through each score entry
-        if(gameScores[i][0] === name){ // If it's the right player
-            gameScores[i][1] = scores // The scores get updated
+    for(var i = 0; i < playerScores.length; i++){ // Loops through each score entry
+        if(playerScores[i][0] === name){ // If it's the right player
+            playerScores[i][1] = scores // The scores get updated
             alert(`The scores for ${name} have been updated.`)
         }
     }
@@ -99,10 +99,10 @@ function displaySummary(){
         }
 
         var scores = "No scores added"; // Default if no scores are found
-        for(var j = 0; j < gameScores.length; j++){ // Loops through  
-            if(gameScores[j][0] === name){ // If the entry matches the player,
-                if(gameScores[j][1].length === 3){ // and if the scores were inputted correctly,
-                    scores = gameScores[j][1]; // The scores will be displayed
+        for(var j = 0; j < playerScores.length; j++){ // Loops through  
+            if(playerScores[j][0] === name){ // If the entry matches the player,
+                if(playerScores[j][1].length === 3){ // and if the scores were inputted correctly,
+                    scores = playerScores[j][1]; // The scores will be displayed
                 }
             }
         }
@@ -126,9 +126,9 @@ function sortByAverage(){
 
     const averages = []; // Stores averages for each player
 
-    for(var i = 0; i < gameScores.length; i++){
-        var name = gameScores[i][0] // Player name
-        var scores = gameScores[i][1] // Player scores
+    for(var i = 0; i < playerScores.length; i++){
+        var name = playerScores[i][0] // Player name
+        var scores = playerScores[i][1] // Player scores
 
         if(scores.length !== 3){
             averages.push[name, 0] // Cannot display average if there are not 3 scores
