@@ -199,7 +199,7 @@ function showPopularGame(){
             maxCount = count; // Update max
             mostPopular = [game]; // Replace list with this game
         }else if(count === maxCount){ // If there's a tie,
-            mostPopular.push(game); // Add game to the list
+            mostPopular.push(game); // Add the second game to the list
         }
     }
 
